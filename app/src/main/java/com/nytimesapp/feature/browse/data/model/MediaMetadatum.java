@@ -1,10 +1,13 @@
 
 package com.nytimesapp.feature.browse.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MediaMetadatum {
+public class MediaMetadatum implements Parcelable {
 
     @SerializedName("url")
     @Expose
@@ -41,6 +44,25 @@ public class MediaMetadatum {
         this.width = width;
     }
 
+    protected MediaMetadatum(Parcel in) {
+        url = in.readString();
+        format = in.readString();
+        height = in.readInt();
+        width = in.readInt();
+    }
+
+    public static final Creator<MediaMetadatum> CREATOR = new Creator<MediaMetadatum>() {
+        @Override
+        public MediaMetadatum createFromParcel(Parcel in) {
+            return new MediaMetadatum(in);
+        }
+
+        @Override
+        public MediaMetadatum[] newArray(int size) {
+            return new MediaMetadatum[size];
+        }
+    };
+
     public String getUrl() {
         return url;
     }
@@ -73,4 +95,16 @@ public class MediaMetadatum {
         this.width = width;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(url);
+        dest.writeString(format);
+        dest.writeInt(height);
+        dest.writeInt(width);
+    }
 }

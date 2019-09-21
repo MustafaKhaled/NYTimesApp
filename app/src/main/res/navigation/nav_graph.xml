@@ -9,5 +9,26 @@
         android:id="@+id/mostPopularNewsFragment"
         android:name="com.nytimesapp.feature.browse.ui.MostPopularNewsFragment"
         tools:layout="@layout/fragment_most_popular"
-        android:label="MostPopularNewsFragment" />
+        android:label="MostPopularNewsFragment" >
+        <action
+            android:id="@+id/action_mostPopularNewsFragment_to_newsDetailsFragment"
+            app:destination="@id/newsDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailsFragment"
+        android:name="com.nytimesapp.feature.details.ui.NewsDetailsFragment"
+        android:label="NewsDetailsFragment" >
+        <argument
+            android:name="result"
+            app:argType="com.nytimesapp.feature.browse.data.model.Result"
+            app:nullable="true" />
+        <argument
+            android:name="media"
+            app:argType="com.nytimesapp.feature.browse.data.model.MediaMetadatum"
+            app:nullable="true" />
+    </fragment>
 </navigation>

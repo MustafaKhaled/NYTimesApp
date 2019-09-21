@@ -17,6 +17,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +29,9 @@ import com.nytimesapp.feature.browse.data.model.MostPopularNewsResponse;
 import com.nytimesapp.feature.browse.data.model.Result;
 import com.nytimesapp.feature.browse.di.component.DaggerMostPopularNewsComponent;
 import com.nytimesapp.feature.browse.ui.adapter.MostPopularNewsAdapter;
+import com.nytimesapp.feature.browse.ui.adapter.OnItemSelected;
 import com.nytimesapp.feature.browse.viewmodel.MostPopularNewsViewModel;
+import com.nytimesapp.feature.details.ui.NewsDetailsFragment;
 import com.nytimesapp.util.MyApp;
 import com.nytimesapp.util.ResponseApi;
 
@@ -42,14 +45,14 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import timber.log.Timber;
 
-public class MostPopularNewsFragment extends Fragment {
+public class MostPopularNewsFragment extends Fragment implements OnItemSelected {
     @Inject
     DaggerViewModelFactory factory;
     @BindView(R.id.news_rv)
     RecyclerView newsRV;
     @BindView(R.id.progress_bar)
     ProgressBar newsProgressBar;
-    private MostPopularNewsAdapter adapter = new MostPopularNewsAdapter();
+    private MostPopularNewsAdapter adapter = new MostPopularNewsAdapter(this);
     private MostPopularNewsViewModel viewModel;
     private List<Result> results;
 
@@ -173,4 +176,12 @@ public class MostPopularNewsFragment extends Fragment {
         newsProgressBar.setVisibility(View.GONE);
     };
 
+    @Override
+    public void onClicked(Result result) {
+        Navigation.findNavController(getView()).navigate(navigateToDetails(result));
+    }
+
+    private MostPopularNewsFragmentDirections.ActionMostPopularNewsFragmentToNewsDetailsFragment navigateToDetails(Result result){
+        return MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToNewsDetailsFragment(result,result.getMedia().get(0).getMediaMetadata().get(0));
+    }
 }

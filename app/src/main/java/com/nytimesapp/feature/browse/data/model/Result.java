@@ -1,11 +1,14 @@
 
 package com.nytimesapp.feature.browse.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+public class Result implements Parcelable {
 
     @SerializedName("url")
     @Expose
@@ -100,6 +103,35 @@ public class Result {
         this.media = media;
         this.uri = uri;
     }
+
+    protected Result(Parcel in) {
+        url = in.readString();
+        adxKeywords = in.readString();
+        column = in.readString();
+        section = in.readString();
+        byline = in.readString();
+        type = in.readString();
+        title = in.readString();
+        _abstract = in.readString();
+        publishedDate = in.readString();
+        source = in.readString();
+        id = in.readLong();
+        assetId = in.readLong();
+        views = in.readLong();
+        uri = in.readString();
+    }
+
+    public static final Creator<Result> CREATOR = new Creator<Result>() {
+        @Override
+        public Result createFromParcel(Parcel in) {
+            return new Result(in);
+        }
+
+        @Override
+        public Result[] newArray(int size) {
+            return new Result[size];
+        }
+    };
 
     public String getUrl() {
         return url;
@@ -222,4 +254,26 @@ public class Result {
         this.uri = uri;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(url);
+        dest.writeString(adxKeywords);
+        dest.writeString(column);
+        dest.writeString(section);
+        dest.writeString(byline);
+        dest.writeString(type);
+        dest.writeString(title);
+        dest.writeString(_abstract);
+        dest.writeString(publishedDate);
+        dest.writeString(source);
+        dest.writeLong(id);
+        dest.writeLong(assetId);
+        dest.writeLong(views);
+        dest.writeString(uri);
+    }
 }

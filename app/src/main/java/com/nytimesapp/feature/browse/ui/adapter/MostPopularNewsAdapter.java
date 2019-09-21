@@ -23,7 +23,11 @@ import java.util.List;
 public class MostPopularNewsAdapter extends RecyclerView.Adapter<MostPopularNewsAdapter.NewsViewHolder> {
 
     private List<Result> results = new ArrayList<>();
-    private List<Result> resultFilter = new ArrayList<>();
+    private OnItemSelected onItemSelected;
+
+    public MostPopularNewsAdapter(OnItemSelected onItemSelected) {
+        this.onItemSelected = onItemSelected;
+    }
 
     @NonNull
     @Override
@@ -71,6 +75,14 @@ public class MostPopularNewsAdapter extends RecyclerView.Adapter<MostPopularNews
             binding.setMedia(result.getMedia().get(0).getMediaMetadata().get(0));
             binding.executePendingBindings();
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemSelected.onClicked(results.get(getAdapterPosition()));
+                }
+            });
+
         }
+
     }
 }
