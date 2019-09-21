@@ -4,14 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nytimesapp.R;
 import com.nytimesapp.databinding.MostPopularListItemBinding;
 import com.nytimesapp.feature.browse.data.model.Result;
+import com.nytimesapp.util.NewsResultDiffUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,7 @@ import java.util.List;
 public class MostPopularNewsAdapter extends RecyclerView.Adapter<MostPopularNewsAdapter.NewsViewHolder> {
 
     private List<Result> results = new ArrayList<>();
+    private List<Result> resultFilter = new ArrayList<>();
 
     @NonNull
     @Override
@@ -40,8 +45,18 @@ public class MostPopularNewsAdapter extends RecyclerView.Adapter<MostPopularNews
 
     public void addItems(List<Result> newResults) {
         results.addAll(newResults);
-        notifyItemRangeInserted(results.size() - 1, newResults.size()-1);
+        notifyItemRangeInserted(results.size() - 1, newResults.size() - 1);
     }
+
+    public void setFilter(List<Result> newList) {
+        final NewsResultDiffUtil diffUtil = new NewsResultDiffUtil(results, newList);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffUtil);
+        results.clear();
+        results.addAll(newList);
+        diffResult.dispatchUpdatesTo(this);
+
+    }
+
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
         private MostPopularListItemBinding binding;
