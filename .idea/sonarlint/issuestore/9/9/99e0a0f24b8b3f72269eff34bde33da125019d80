@@ -1,5 +1,5 @@
 
+vsquid:S3008"SRename this field "BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÖææıÿÿÿÿ8­šî™Õ-
 ]squid:S1118":Add a private constructor to hide the implicit public one.(“³±ûÿÿÿÿ8­šî™Õ-
 "squid:ClassVariableVisibilityCheck"TMake BASE_URL a static final constant or non-public and provide accessors if needed.(íÖææıÿÿÿÿ8­šî™Õ-
 Qsquid:S1444".Make this "public static BASE_URL" field final(íÖææıÿÿÿÿ8­šî™Õ-
-vsquid:S3008"SRename this field "BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÖææıÿÿÿÿ8­šî™Õ-

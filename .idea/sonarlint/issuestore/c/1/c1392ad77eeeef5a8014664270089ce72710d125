@@ -1,0 +1,9 @@
+
+Gsquid:S1066"/Merge this if statement with the enclosing one.(ËÄÒ‚
+Gsquid:S1066"/Merge this if statement with the enclosing one.(½éË
+gsquid:S1301i"KReplace this "switch" statement by "if" statements to increase readability.(‰¬›Áÿÿÿÿÿ
+nsquid:S00117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Úëşÿÿÿÿ
+nsquid:S00117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íØª›şÿÿÿÿ
+U"squid:SwitchLastCaseIsDefaultChecki""Add a default case to this switch.(‰¬›Áÿÿÿÿÿ
+Fsquid:S00108i")Either remove or fill this block of code.(‰¬›Áÿÿÿÿÿ
+msquid:UnusedPrivateMethod"HRemove this unused private "MostPopularListItemBindingImpl" constructor.(ìæÅ´
