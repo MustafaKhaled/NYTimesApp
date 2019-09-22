@@ -10,7 +10,9 @@ Building this project in MVVM pattern, to take advantage of observation, also us
 
 # Support
 MVVM archiceture: https://developer.android.com/jetpack/docs/guide
+
 Dagger2 with MVVM: https://medium.com/@princessdharmy/dagger-2-with-mvvm-simplified-3215b3cf4c96
+
 RXjava2: https://www.toptal.com/android/functional-reactive-android-rxjava
 
 
