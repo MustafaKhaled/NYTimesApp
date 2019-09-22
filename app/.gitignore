@@ -81,3 +81,7 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+_site/
+.DS_Store
+.idea

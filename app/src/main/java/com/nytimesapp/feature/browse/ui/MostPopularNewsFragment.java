@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.nytimesapp.R;
 import com.nytimesapp.di.module.multibinding.DaggerViewModelFactory;
 import com.nytimesapp.feature.browse.data.model.MostPopularNewsResponse;
@@ -31,7 +30,6 @@ import com.nytimesapp.feature.browse.di.component.DaggerMostPopularNewsComponent
 import com.nytimesapp.feature.browse.ui.adapter.MostPopularNewsAdapter;
 import com.nytimesapp.feature.browse.ui.adapter.OnItemSelected;
 import com.nytimesapp.feature.browse.viewmodel.MostPopularNewsViewModel;
-import com.nytimesapp.feature.details.ui.NewsDetailsFragment;
 import com.nytimesapp.util.MyApp;
 import com.nytimesapp.util.ResponseApi;
 
@@ -42,7 +40,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
 import timber.log.Timber;
 
 public class MostPopularNewsFragment extends Fragment implements OnItemSelected {
@@ -52,9 +49,11 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
     RecyclerView newsRV;
     @BindView(R.id.progress_bar)
     ProgressBar newsProgressBar;
+    private ProgressListener mListener;
     private MostPopularNewsAdapter adapter = new MostPopularNewsAdapter(this);
     private MostPopularNewsViewModel viewModel;
     private List<Result> results;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -160,11 +159,13 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
             case LOADING:
                 Timber.d("Loading");
                 newsProgressBar.setVisibility(View.VISIBLE);
+                showProgress();
                 return;
 
             case SUCCESS:
                 results = response.data.getResults();
                 adapter.addItems(results);
+                dismissProgress();
 
                 break;
 
@@ -183,5 +184,49 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
 
     private MostPopularNewsFragmentDirections.ActionMostPopularNewsFragmentToNewsDetailsFragment navigateToDetails(Result result){
         return MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToNewsDetailsFragment(result,result.getMedia().get(0).getMediaMetadata().get(0));
+    }
+
+
+
+    private void showProgress() {
+        // show the progress and notify the listener
+        notifyListener(mListener);
+    }
+
+    private void dismissProgress() {
+        // hide the progress and notify the listener
+        notifyListener(mListener);
+    }
+
+    public boolean isInProgress() {
+        // return true if progress isk visible
+        if(newsProgressBar!=null){
+            if(newsProgressBar.getVisibility() == View.VISIBLE)
+                return true;
+
+        }
+                return true;
+        }
+
+    private void notifyListener(ProgressListener listener) {
+            if (listener == null){
+                return;
+            }
+            if (isInProgress()){
+                listener.onProgressShown();
+            }
+            else {
+                listener.onProgressDismissed();
+            }
+
+
+    }
+
+    public interface ProgressListener {
+        void onProgressShown();
+        void onProgressDismissed();
+    }
+    public void setProgressListener(ProgressListener progressListener) {
+        mListener = progressListener;
     }
 }

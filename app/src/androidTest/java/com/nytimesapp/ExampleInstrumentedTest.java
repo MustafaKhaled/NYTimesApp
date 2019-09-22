@@ -2,8 +2,12 @@ package com.nytimesapp;
 
 import android.content.Context;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,4 +28,7 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.nytimesapp", appContext.getPackageName());
     }
+
+
+
 }

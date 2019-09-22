@@ -23,8 +23,11 @@ public class NewsDetailsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        result = NewsDetailsFragmentArgs.fromBundle(getArguments()).getResult();
-        media = NewsDetailsFragmentArgs.fromBundle(getArguments()).getMedia();
+        if(getArguments()!=null){
+            result = NewsDetailsFragmentArgs.fromBundle(getArguments()).getResult();
+            media = NewsDetailsFragmentArgs.fromBundle(getArguments()).getMedia();
+        }
+
     }
 
     @Nullable
