@@ -1,13 +1,0 @@
-
-Zsquid:S001071"BConstructor has 10 parameters, which is greater than 7 authorized.(×º‰
-isquid:S001171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×º‰
-isquid:S001171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×º‰
-isquid:S001171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×º‰
-zsquid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(È‘‹´ùÿÿÿÿ
-zsquid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(Ãş”«ıÿÿÿÿ
-Qsquid:S1133["5Do not forget to remove this deprecated code someday.(ª–ıÿÿÿÿÿ
-Usquid:MissingDeprecatedCheck["(Add the missing @deprecated Javadoc tag.(ª–ıÿÿÿÿÿ
-Qsquid:S1133n"5Do not forget to remove this deprecated code someday.(ª–ıÿÿÿÿÿ
-Usquid:MissingDeprecatedCheckn"(Add the missing @deprecated Javadoc tag.(ª–ıÿÿÿÿÿ
-Qsquid:S1133"5Do not forget to remove this deprecated code someday.(Í›½„ùÿÿÿÿ
-Usquid:MissingDeprecatedCheck"(Add the missing @deprecated Javadoc tag.(Í›½„ùÿÿÿÿ

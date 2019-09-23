@@ -1,6 +1,0 @@
-
-jsquid:S00101p"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(­¶Öýùÿÿÿÿ
-|squid:S1450"eRemove the "exposeRetrofitProvider" field and declare it as a local variable in the relevant methods.(ùëðý
-”squid:S1450"xRemove the "providesMostPopularNewsApiServiceProvider" field and declare it as a local variable in the relevant methods.(­½ Ùùÿÿÿÿ
-‡squid:S1450"pRemove the "mostPopularNewsRepositoryProvider" field and declare it as a local variable in the relevant methods.(À‡ÎÒ
-†squid:S1450"oRemove the "mostPopularNewsViewModelProvider" field and declare it as a local variable in the relevant methods.(—Ÿ¶Ä

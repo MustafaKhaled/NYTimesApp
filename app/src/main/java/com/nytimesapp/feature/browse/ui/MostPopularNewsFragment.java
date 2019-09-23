@@ -49,7 +49,6 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
     RecyclerView newsRV;
     @BindView(R.id.progress_bar)
     ProgressBar newsProgressBar;
-    private ProgressListener mListener;
     private MostPopularNewsAdapter adapter = new MostPopularNewsAdapter(this);
     private MostPopularNewsViewModel viewModel;
     private List<Result> results;
@@ -159,13 +158,11 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
             case LOADING:
                 Timber.d("Loading");
                 newsProgressBar.setVisibility(View.VISIBLE);
-                showProgress();
                 return;
 
             case SUCCESS:
                 results = response.data.getResults();
                 adapter.addItems(results);
-                dismissProgress();
 
                 break;
 
@@ -186,47 +183,4 @@ public class MostPopularNewsFragment extends Fragment implements OnItemSelected 
         return MostPopularNewsFragmentDirections.actionMostPopularNewsFragmentToNewsDetailsFragment(result,result.getMedia().get(0).getMediaMetadata().get(0));
     }
 
-
-
-    private void showProgress() {
-        // show the progress and notify the listener
-        notifyListener(mListener);
-    }
-
-    private void dismissProgress() {
-        // hide the progress and notify the listener
-        notifyListener(mListener);
-    }
-
-    public boolean isInProgress() {
-        // return true if progress isk visible
-        if(newsProgressBar!=null){
-            if(newsProgressBar.getVisibility() == View.VISIBLE)
-                return true;
-
-        }
-                return true;
-        }
-
-    private void notifyListener(ProgressListener listener) {
-            if (listener == null){
-                return;
-            }
-            if (isInProgress()){
-                listener.onProgressShown();
-            }
-            else {
-                listener.onProgressDismissed();
-            }
-
-
-    }
-
-    public interface ProgressListener {
-        void onProgressShown();
-        void onProgressDismissed();
-    }
-    public void setProgressListener(ProgressListener progressListener) {
-        mListener = progressListener;
-    }
 }

@@ -1,8 +1,0 @@
-
-squid:S1450 "cRemove the "providesFileProvider" field and declare it as a local variable in the relevant methods.(Äâ—ôøÿÿÿÿ
-{squid:S1450""dRemove the "providesCacheProvider" field and declare it as a local variable in the relevant methods.(Ûðä›
-‡squid:S1450$"pRemove the "getHttpLoggingInterceptorProvider" field and declare it as a local variable in the relevant methods.(‹ŽíÔ
-Žsquid:S1450&"rRemove the "providesRetrofitInterceptorProvider" field and declare it as a local variable in the relevant methods.(¬áÃÚúÿÿÿÿ
-‚squid:S1450("fRemove the "getOkHttpClientProvider" field and declare it as a local variable in the relevant methods.(ãùÑ£üÿÿÿÿ
-zsquid:S1450*"cRemove the "providesGsonProvider" field and declare it as a local variable in the relevant methods.(Îè®®
-Šsquid:S1450,"sRemove the "providesGsonConverterFactoryProvider" field and declare it as a local variable in the relevant methods.(’ºí«
